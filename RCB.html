@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RCB Match Predictor</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #111, #550000);
+      color: #FFD700;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #AA0000;
+      padding: 20px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.5);
+    }
+    header img {
+      height: 80px;
+    }
+    h1 {
+      margin: 10px 0;
+      font-size: 2.2rem;
+    }
+    .container {
+      margin-top: 40px;
+      background: rgba(0,0,0,0.6);
+      padding: 30px;
+      border-radius: 15px;
+      display: inline-block;
+      box-shadow: 0 0 20px rgba(255,215,0,0.5);
+    }
+    select, button {
+      padding: 10px 15px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    button {
+      background: #FFD700;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+    }
+    button:hover {
+      background: #ffec80;
+      transform: scale(1.1);
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/en/3/3e/Royal_Challengers_Bangalore_2020.png" alt="RCB Logo">
+    <h1>RCB Match Predictor 🔮</h1>
+  </header>
+
+  <div class="container">
+    <label>Opponent:</label>
+    <select id="opponent">
+      <option>MI</option>
+      <option>CSK</option>
+      <option>KKR</option>
+      <option>DC</option>
+      <option>SRH</option>
+    </select><br>
+
+    <label>Venue:</label>
+    <select id="venue">
+      <option>Chinnaswamy</option>
+      <option>Wankhede</option>
+      <option>Eden Gardens</option>
+      <option>Arun Jaitley</option>
+      <option>Chepauk</option>
+    </select><br>
+
+    <button onclick="predict()">Predict</button>
+
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function predict() {
+      const opponent = document.getElementById("opponent").value;
+      const venue = document.getElementById("venue").value;
+      const winChance = Math.floor(Math.random() * 100) + 1;
+
+      const result = document.getElementById("result");
+      result.innerText = `🔥 Against ${opponent} at ${venue}, RCB has a ${winChance}% chance of winning! 🔥`;
+      result.style.animation = "none";
+      result.offsetHeight; // reset animation
+      result.style.animation = "fadeIn 1s ease-in-out";
+    }
+  </script>
+</body>
+</html>
